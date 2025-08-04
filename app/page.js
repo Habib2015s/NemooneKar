@@ -11,22 +11,12 @@ export default function Page() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', gap: '30px', justifyContent: 'center', marginTop: '40px' }}>
-      <HoverIcon
-        src="https://cdn.lordicon.com/rjzlnunf.json"
-        baseColors="primary:#e11d48,secondary:#fbbf24"
-        hoverColors="primary:#0ea5e9,secondary:#38bdf8"
-      />
-      <HoverIcon
-        src="https://cdn.lordicon.com/slkvcfos.json"
-        baseColors="primary:#4ade80,secondary:#facc15"
-        hoverColors="primary:#f97316,secondary:#f43f5e"
-      />
-      <HoverIcon
-        src="https://cdn.lordicon.com/dklbhvrt.json"
-        baseColors="primary:#6366f1,secondary:#c084fc"
-        hoverColors="primary:#14b8a6,secondary:#06b6d4"
-      />
+    <div >
+      <p >درباره من</p>
+      <p className='font-bold text-2xl' style={{fontFamily:"Shabnam"}}>درباره من</p>
+      <p style={{fontFamily:"sans-serif"}}>درباره من</p>
+      <p style={{fontFamily:"Sahel"}}>درباره من</p>
+
     </div>
   );
 }
