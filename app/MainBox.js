@@ -41,7 +41,7 @@ export default function MainBox() {
         {/* سمت راست: Box 3 (بزرگ با تصویر و متن) */}
         <div className='flex flex-col'>
         <div className="w-2xl h-72 shadow-3xl rounded-3xl p-6 
-          bg-gradient-to-br from-[#21074b] via-[#21074b] to-[#5D54A4]
+          bg-gradient-to-br from-[#FF8F9B] via-[#21074b] to-[#5D54A4]
           transform transition-transform duration-500 ease-in-out
           hover:scale-105 hover:shadow-4xl flex">
 
