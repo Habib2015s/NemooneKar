@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2B2D42;
 }
 
 @font-face {
@@ -27,9 +27,22 @@ body {
   --font-mono: var(--font-geist-mono);
 }
 
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl 15s linear infinite;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1B1931;
     --foreground: #ededed;
   }
 }
