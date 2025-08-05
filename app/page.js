@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import HoverIcon from './HoverIcon'; // اطمینان از مسیر درست
 import MainBox from './MainBox';
 import Medias from './Medias';
+import Text from './Text';
 
 export default function Page() {
   useEffect(() => {
@@ -15,7 +16,10 @@ export default function Page() {
   return (
     <div>
 
-    <div className="w-11/12 mx-auto py-10 flex items-center justify-between">
+    <div className="fixed top-0 left-0 right-0 z-50  
+                w-full mx-auto py-6 flex items-center justify-between 
+                bg-black/50 backdrop-blur-md backdrop-saturate-150 
+                rounded-xl px-25 shadow-lg text-white">
       
       {/* دکمه سمت چپ */}
       <div className="flex items-center gap-4">
@@ -39,7 +43,7 @@ export default function Page() {
       </div>
 
       {/* آیکون سمت راست */}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <HoverIcon
           src="https://cdn.lordicon.com/zfemvkpr.json"
           baseColors="primary:#6366f1,secondary:#fbbf24"
@@ -48,7 +52,11 @@ export default function Page() {
           />
       </div>
           </div>
+          <div className='pt-32'>
+
       <MainBox/>
+      <Text/>
+          </div>
     </div>
   );
 }
