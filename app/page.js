@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import HoverIcon from './HoverIcon'; // اطمینان از مسیر درست
 import MainBox from './MainBox';
+import Medias from './Medias';
 
 export default function Page() {
   useEffect(() => {
@@ -48,6 +49,7 @@ export default function Page() {
       </div>
           </div>
       <MainBox/>
+      <Medias/>
     </div>
   );
 }

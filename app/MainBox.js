@@ -1,5 +1,6 @@
 import React from 'react'
 import Marquee from './Marquee'
+import Medias from './Medias'
 
 export default function MainBox() {
   return (
@@ -38,13 +39,15 @@ export default function MainBox() {
         </div>
 
         {/* سمت راست: Box 3 (بزرگ با تصویر و متن) */}
+        <div className='flex flex-col'>
         <div className="w-2xl h-72 shadow-3xl rounded-3xl p-6 
           bg-gradient-to-br from-[#21074b] via-[#21074b] to-[#5D54A4]
           transform transition-transform duration-500 ease-in-out
           hover:scale-105 hover:shadow-4xl flex">
 
           {/* محتوای داخلی: تصویر سمت راست، متن سمت چپ */}
-          <div className="flex flex-row-reverse w-full items-start ">
+
+          <div className="flex flex-row-reverse  w-full items-start ">
             
             {/* تصویر سمت راست */}
             <div className="w-60 h-full flex justify-end">
@@ -52,7 +55,7 @@ export default function MainBox() {
                 src="./me.jpg"
                 alt="me"
                 className="rounded-3xl h-full w-fit "
-              />
+                />
             </div>
 
             {/* متن سمت چپ */}
@@ -61,7 +64,7 @@ export default function MainBox() {
               <p
                 style={{ fontFamily: "Shabnam" }}
                 className="font-bold text-2xl justify-end items-end flex mt-4"
-              >
+                >
                 سید حبیب الله موسوی
               </p><br/>
               <p className="text-gray-500 ">
@@ -71,6 +74,8 @@ export default function MainBox() {
             </div>
           </div>
         </div>
+          <Medias/>
+                  </div>
       </div>
     </div>
   )
