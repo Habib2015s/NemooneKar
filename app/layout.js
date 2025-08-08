@@ -20,32 +20,36 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const bgColor = "#1B1931"; // رنگ پس‌زمینه ثابت
+  const textColor = "#ededed"; // رنگ متن ثابت
+
   return (
     <html
       lang="fa"
       style={{
-        backgroundColor: "var(--background)",
-        color: "var(--foreground)",
+        backgroundColor: bgColor,
+        color: textColor,
       }}
+      suppressHydrationWarning
     >
       <head>
-        {/* تغییر رنگ نوار آدرس موبایل */}
-        <meta
-          name="theme-color"
-          content="#1B1931"
-          media="(prefers-color-scheme: dark)"
-        />
-        <meta
-          name="theme-color"
-          content="#ffffff"
-          media="(prefers-color-scheme: light)"
-        />
+        {/* جلوگیری از چشمک سفید در موبایل */}
+        <meta name="theme-color" content={bgColor} />
+        <style>{`
+          html, body {
+            background-color: ${bgColor} !important;
+            color: ${textColor} !important;
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+          }
+        `}</style>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
-          backgroundColor: "var(--background)",
-          color: "var(--foreground)",
+          backgroundColor: bgColor,
+          color: textColor,
         }}
       >
         {children}
