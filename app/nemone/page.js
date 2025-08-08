@@ -28,7 +28,23 @@ export default function Page() {
   return (
     <div>
       <Menu />
-      <div className="mt-44 max-w-screen-xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      {/* عنوان بخش نمونه کارها */}
+      <div className="mt-32 flex items-center justify-center ">
+        <div className="flex items-center w-full max-w-4xl px-4 mt-24">
+          <div className="flex-grow border-t border-gray-400"></div>
+          <span
+            className="mx-4 text-2xl font-bold"
+            style={{ fontFamily: "Shabnam" }}
+          >
+            نمونه کارها
+          </span>
+          <div className="flex-grow border-t border-gray-400"></div>
+        </div>
+      </div>
+
+      {/* گرید پروژه‌ها */}
+      <div className="mt-12 max-w-screen-xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -40,7 +56,7 @@ export default function Page() {
             <img
               src={project.image}
               alt={project.title}
-                className="w-full h-48 object-cover transform transition duration-500 hover:scale-110 hover:brightness-110"
+              className="w-full h-48 object-cover transform transition duration-500 hover:scale-110 hover:brightness-110"
             />
             <div className="p-6 text-right">
               <h2
@@ -49,7 +65,7 @@ export default function Page() {
               >
                 {project.title}
               </h2>
-              <p className="text-gray-600 mb-4">{project.description}</p>
+              <p className="text-gray-200 mb-4">{project.description}</p>
               <a
                 href={project.link}
                 target="_blank"
