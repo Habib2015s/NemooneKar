@@ -17,10 +17,9 @@ export default function SocialMedia() {
       <style jsx>{`
         .container {
           max-width: 600px;
-          margin-top: 224px;
+          margin: 80px auto 0 auto;
           display: flex;
           flex-direction: column;
-          margin-left: 448px;
           padding: 40px;
           background: linear-gradient(135deg, #575757 0%, #21074b 50%, #21074b 100%);
           border-radius: 25px;
@@ -28,6 +27,7 @@ export default function SocialMedia() {
           color: #ddd;
           font-family: "Vazirmatn", sans-serif;
           text-align: center;
+          direction: rtl;
         }
 
         .description {
@@ -35,12 +35,14 @@ export default function SocialMedia() {
           margin-bottom: 30px;
           line-height: 1.6;
           color: #eee;
+          text-align: right;
         }
 
         .social-container {
           display: flex;
           justify-content: center;
           gap: 50px;
+          flex-wrap: wrap;
         }
 
         a {
@@ -55,6 +57,9 @@ export default function SocialMedia() {
           /* انیمیشن ورود */
           opacity: 0;
           animation: fadeInScale 0.6s forwards;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         /* زمان‌بندی انیمیشن‌ها برای هر آیکون */
@@ -102,12 +107,45 @@ export default function SocialMedia() {
         a:hover::before {
           opacity: 1;
         }
+
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+          .container {
+            max-width: 90%;
+            margin-top: 100px;
+            padding: 30px 20px;
+          }
+          a {
+            font-size: 44px;
+            padding: 8px;
+            margin: 10px;
+          }
+          .social-container {
+            gap: 30px;
+            justify-content: center;
+          }
+          .description {
+            font-size: 1rem;
+            text-align: justify;
+          }
+        }
+
+        @media (max-width: 480px) {
+          a {
+            font-size: 36px;
+            padding: 6px;
+            margin: 8px;
+          }
+          .description {
+            font-size: 0.9rem;
+          }
+        }
       `}</style>
 
-      <div className="container ">
+      <div className="container">
         <p className="description" style={{ fontFamily: "Shabnam" }}>
-          اگر سوالی دارید، دنبال همکاری هستید،  
-          می‌توانید از شبکه‌های اجتماعی زیر استفاده کنید.  
+          اگر سوالی دارید، دنبال همکاری هستید،
+          می‌توانید از شبکه‌های اجتماعی زیر استفاده کنید.
           روی آیکون‌ها کلیک کنید تا به صفحه من هدایت شوید.
         </p>
 
@@ -125,7 +163,7 @@ export default function SocialMedia() {
               rel="noopener noreferrer"
               aria-label={name}
               title={name}
-              style={{ animationDelay: `${0.2 * idx}s` }} // جایگزینی انیمیشن دلی برای اطمینان
+              style={{ animationDelay: `${0.2 * idx}s` }} 
             >
               <FontAwesomeIcon icon={icon} />
             </a>
