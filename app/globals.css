@@ -14,7 +14,10 @@
   font-display: swap;
 }
 
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
   font-family: "Shabnam", sans-serif;
   background-color: var(--background) !important;
   color: var(--foreground) !important;
@@ -28,8 +31,7 @@ body {
   }
 }
 
-/* بقیه کدهای انیمیشن و کلاس‌ها */
-
+/* باقی استایل‌ها و انیمیشن‌ها */
 @keyframes marquee-rtl {
   0% {
     transform: translateX(-100%);
