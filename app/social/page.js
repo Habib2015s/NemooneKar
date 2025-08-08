@@ -13,14 +13,14 @@ import Menu from "../Menu";
 export default function SocialMedia() {
   return (
     <>
-    <Menu/>
+      <Menu />
       <style jsx>{`
         .container {
           max-width: 600px;
           margin-top: 224px;
-          display:flex;
-          flex-direction:column;
-          margin-left:448px;
+          display: flex;
+          flex-direction: column;
+          margin-left: 448px;
           padding: 40px;
           background: linear-gradient(135deg, #575757 0%, #21074b 50%, #21074b 100%);
           border-radius: 25px;
@@ -51,6 +51,35 @@ export default function SocialMedia() {
           filter: drop-shadow(0 0 6px rgba(187, 134, 252, 0.6));
           border-radius: 50%;
           padding: 10px;
+
+          /* انیمیشن ورود */
+          opacity: 0;
+          animation: fadeInScale 0.6s forwards;
+        }
+
+        /* زمان‌بندی انیمیشن‌ها برای هر آیکون */
+        a:nth-child(1) {
+          animation-delay: 0.1s;
+        }
+        a:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+        a:nth-child(3) {
+          animation-delay: 0.5s;
+        }
+        a:nth-child(4) {
+          animation-delay: 0.7s;
+        }
+
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.5);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
 
         a::before {
@@ -76,7 +105,7 @@ export default function SocialMedia() {
       `}</style>
 
       <div className="container ">
-        <p className="description"style={{ fontFamily: "Shabnam" }}>  
+        <p className="description" style={{ fontFamily: "Shabnam" }}>
           اگر سوالی دارید، دنبال همکاری هستید،  
           می‌توانید از شبکه‌های اجتماعی زیر استفاده کنید.  
           روی آیکون‌ها کلیک کنید تا به صفحه من هدایت شوید.
@@ -88,7 +117,7 @@ export default function SocialMedia() {
             { icon: faInstagram, name: "Instagram", url: "https://www.instagram.com/habib.racel/" },
             { icon: faLinkedin, name: "LinkedIn", url: "https://www.linkedin.com/in/%D8%AD%D8%A8%DB%8C%D8%A8-%D8%A7%D9%84%D9%84%D9%87-%D9%85%D9%88%D8%B3%D9%88%DB%8C-974a61352/" },
             { icon: faTelegram, name: "Telegram", url: "https://t.me/Habib_m0" },
-          ].map(({ icon, name, url }) => (
+          ].map(({ icon, name, url }, idx) => (
             <a
               key={name}
               href={url}
@@ -96,6 +125,7 @@ export default function SocialMedia() {
               rel="noopener noreferrer"
               aria-label={name}
               title={name}
+              style={{ animationDelay: `${0.2 * idx}s` }} // جایگزینی انیمیشن دلی برای اطمینان
             >
               <FontAwesomeIcon icon={icon} />
             </a>

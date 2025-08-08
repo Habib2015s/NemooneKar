@@ -19,81 +19,91 @@ export default function Page() {
   );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSkills(skillsData.map(skill => ({ ...skill, current: skill.level })));
-    }, 300);
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setSkills(prevSkills => {
+        let done = true;
+        const updatedSkills = prevSkills.map((skill, idx) => {
+          if (skill.current < skillsData[idx].level) {
+            done = false;
+            return { ...skill, current: Math.min(skill.current + 2, skillsData[idx].level) };
+          }
+          return skill;
+        });
+        if (done) clearInterval(interval);
+        return updatedSkills;
+      });
+    }, 30);
+    return () => clearInterval(interval);
   }, []);
 
-  return (<div>
-
+  return (
+    <div>
       <Menu />
-    <div style={{ fontFamily: "Shabnam", direction: "rtl" }}>
-
-      {/* بخش معرفی */}
-      <div className="mt-48 flex flex-col md:flex-row gap-6 justify-center items-center px-4 md:px-0">
-        <div className="w-full max-w-xs md:max-w-60 h-48 md:h-full flex justify-center md:justify-end mb-4 md:mb-0">
-          <img
-            src="./me.jpg"
-            alt="me"
-            className="rounded-3xl h-full w-auto object-cover max-w-full"
+      <div
+        style={{ fontFamily: "Shabnam", direction: "rtl" }}
+        className="px-4 md:px-0 min-h-screen flex flex-col"
+      >
+        {/* بخش معرفی */}
+        <div className="mt-48 flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div className="w-full max-w-xs md:max-w-60 h-48 md:h-72 flex justify-center md:justify-end mb-4 md:mb-0">
+            <img
+              src="./me.jpg"
+              alt="me"
+              className="rounded-3xl h-full w-auto object-cover max-w-full"
             />
-        </div>
-        <div className="max-w-3xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b]">
-          <p className="font-bold text-2xl mt-4 text-right">سید حبیب الله موسوی</p>
-          <p className="text-gray-400 text-right mb-4">
-            من کارشناسی مهندسی کامپیوتر دارم و در زمینه گرافیک فعالیت کردم.
-            همچنین دارای مدرک معتبر در طراحی با نرم‌افزارهای حرفه‌ای مثل
-            افترافکت و فتوشاپ هستم که باعث شده نگاه خلاقانه و دقیقی به طراحی
-            داشته باشم. حوزه تخصص اصلی من طراحی وب است و با ترکیب مهارت‌های
-            فنی و هنری، وب‌سایت‌هایی می‌سازم که هم زیبا و هم کاربرپسند باشند.
-            برای من طراحی وب فقط کدنویسی نیست، بلکه خلق تجربه‌ای است که کاربر
-            از ابتدا تا انتها از آن لذت ببرد. با توجه به دانش مهندسی و
-            پس‌زمینه گرافیکی، همیشه سعی می‌کنم پروژه‌هایم نوآورانه، دقیق و
-            مطابق با نیاز مشتری باشد. اگر دنبال یک طراح وب حرفه‌ای با دانش
-            فنی قوی و خلاقیت بالا هستید، من آماده‌ام تا بهترین راهکارها را برای
-            موفقیت پروژه شما ارائه دهم و در کنار شما باشم.
-          </p>
-        </div>
-
-      </div>
-
-      {/* بخش تجربه‌ها و مهارت‌ها */}
-      <div className="flex flex-col justify-center md:flex-row gap-6 m-10">
-        
-        {/* تجربه های کاری */}
-        <div className="max-w-xl flex flex-col h-fit shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
-          <p className="text-right font-bold text-xl m-4">تجربه های کاری</p>
-          <ul className="list-disc text-gray-400 space-y-2 pr-6">
-            <li>طراحی سایت های فروشگاهی</li>
-            <li>طراحی سایت های شرکتی</li>
-            <li>طراحی قالب گرافیکی و پوستر</li>
-          </ul>
-        </div>
-
-        {/* مهارت های من */}
-        <div className="max-w-xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
-          <p className="text-right font-bold text-xl mb-4">مهارت های من</p>
-          <div className="space-y-6">
-            {skills.map((skill, i) => (
-                <div key={i}>
-                <div className="flex justify-between text-gray-300 text-sm mb-1">
-                  <span>{skill.name}</span>
-                  <span>{skill.current}%</span>
-                </div>
-                <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden relative">
-                  <div
-                    className="bg-purple-500 h-4 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.current}%` }}
-                    ></div>
-                </div>
-              </div>
-            ))}
+          </div>
+          <div className="max-w-3xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b]">
+            <p className="font-bold text-2xl mt-4 text-right">سید حبیب الله موسوی</p>
+            <p className="text-gray-400 text-right mb-4 text-sm md:text-base leading-relaxed">
+              من کارشناسی مهندسی کامپیوتر دارم و در زمینه گرافیک فعالیت کردم.
+              همچنین دارای مدرک معتبر در طراحی با نرم‌افزارهای حرفه‌ای مثل
+              افترافکت و فتوشاپ هستم که باعث شده نگاه خلاقانه و دقیقی به طراحی
+              داشته باشم. حوزه تخصص اصلی من طراحی وب است و با ترکیب مهارت‌های
+              فنی و هنری، وب‌سایت‌هایی می‌سازم که هم زیبا و هم کاربرپسند باشند.
+              برای من طراحی وب فقط کدنویسی نیست، بلکه خلق تجربه‌ای است که کاربر
+              از ابتدا تا انتها از آن لذت ببرد. با توجه به دانش مهندسی و
+              پس‌زمینه گرافیکی، همیشه سعی می‌کنم پروژه‌هایم نوآورانه، دقیق و
+              مطابق با نیاز مشتری باشد. اگر دنبال یک طراح وب حرفه‌ای با دانش
+              فنی قوی و خلاقیت بالا هستید، من آماده‌ام تا بهترین راهکارها را برای
+              موفقیت پروژه شما ارائه دهم و در کنار شما باشم.
+            </p>
           </div>
         </div>
 
+        {/* بخش تجربه‌ها و مهارت‌ها - وسط صفحه */}
+        <div className="flex flex-col md:flex-row gap-6 my-20 flex-1 justify-center items-center">
+          {/* تجربه های کاری */}
+          <div className="max-w-xl flex flex-col h-fit shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
+            <p className="text-right font-bold text-xl m-4">تجربه های کاری</p>
+            <ul className="list-disc text-gray-400 space-y-2 pr-6 text-sm md:text-base">
+              <li>طراحی سایت های فروشگاهی</li>
+              <li>طراحی سایت های شرکتی</li>
+              <li>طراحی قالب گرافیکی و پوستر</li>
+            </ul>
+          </div>
+
+          {/* مهارت های من */}
+          <div className="max-w-xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
+            <p className="text-right font-bold text-xl mb-4">مهارت های من</p>
+            <div className="space-y-6">
+              {skills.map((skill, i) => (
+                <div key={i}>
+                  <div className="flex justify-between text-gray-300 text-sm mb-1">
+                    <span>{skill.name}</span>
+                    <span>{skill.current}%</span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden relative">
+                    <div
+                      className="bg-purple-500 h-4 rounded-full transition-all duration-500 ease-out"
+                      style={{ width: `${skill.current}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-            </div>
   );
 }
