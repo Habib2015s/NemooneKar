@@ -58,8 +58,9 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
                 transition-all duration-500 ease-in-out
                 ${isScrolled ? 'gap-3 text-sm' : 'gap-8 text-base'}
               `}
-            >
+            ><Link href="/darbare">
               <p className='hover:text-[#FF8F9B] cursor-pointer'>درباره من</p>
+            </Link>
               <Link href="/nemone">
               <p className='hover:text-[#FF8F9B] cursor-pointer'>نمونه کارها</p>
               </Link>

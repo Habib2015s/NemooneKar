@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import Marquee from "./Marquee";
 import Medias from "./Medias";
 import { motion } from "framer-motion";
@@ -24,30 +25,34 @@ export default function MainBox() {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             {/* Box 1 */}
+            <Link href="/nemone">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="max-w-sm w-full cursor-pointer h-fit shadow-3xl flex flex-col p-6 rounded-3xl 
-                bg-gradient-to-br from-[#FFDDE1] via-[#FF8F9B] to-[#21074b] transition-transform"
-            >
+              bg-gradient-to-br from-[#FFDDE1] via-[#FF8F9B] to-[#21074b] transition-transform"
+              >
               <img src='./imgg.png' alt="نمونه کار" className='rounded-lg object-cover w-full h-40 sm:h-52' />
               <p style={{ fontFamily: "Shabnam" }} className='font-bold text-xl justify-end flex mt-4'>
                 نمونه کارها
               </p>
               <p className='text-gray-500 flex justify-end'>از نمونه کارها بازدید کنید</p>
             </motion.div>
+                </Link>
 
             {/* Box 2 */}
+            <Link href="/darbare">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="max-w-sm w-full cursor-pointer shadow-3xl flex flex-col p-6 rounded-3xl 
-                bg-gradient-to-br from-[#FFDDE1] via-[#FF8F9B] to-[#21074b] transition-transform"
-            >
+              className="max-w-sm w-full cursor-pointer h-fit shadow-3xl flex flex-col p-6 rounded-3xl 
+              bg-gradient-to-br from-[#FFDDE1] via-[#FF8F9B] to-[#21074b] transition-transform"
+              >
               <img src='./person.png' alt="درباره من" className='rounded-lg object-cover w-full h-40 sm:h-52' />
               <p style={{ fontFamily: "Shabnam" }} className='font-bold text-xl justify-end flex mt-4'>
                 درباره من
               </p>
               <p className='text-gray-500 flex justify-end'>درباره من بیشتر بدانید</p>
             </motion.div>
+                </Link>
           </motion.div>
         </div>
 
