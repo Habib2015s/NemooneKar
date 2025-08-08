@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import HoverIcon from './HoverIcon'
 import Link from 'next/link'
 
 export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(false);

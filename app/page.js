@@ -11,7 +11,7 @@ export default function Page() {
       <Menu/>
 
       {/* بقیه صفحه */}
-      <div className="pt-32">
+      <div className="pt-40">
         <MainBox />
         <Text />
         <FooterMenu />

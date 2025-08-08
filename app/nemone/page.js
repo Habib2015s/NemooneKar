@@ -1,31 +1,67 @@
-import React from 'react'
-import Menu from '../Menu'
+"use client";
+import React from "react";
+import Menu from "../Menu";
+import { motion } from "framer-motion";
 
-export default function page  ()  {
+export default function Page() {
+  const projects = [
+    {
+      title: "پروژه اول",
+      description: "آنلاین شاپ",
+      image: "/minishop.png",
+      link: "https://minionlineshop.vercel.app/",
+    },
+    {
+      title: "پروژه دوم",
+      description: "فروشگاه زنجیره ای",
+      image: "/shop.png",
+      link: "https://next-xr8u.vercel.app/",
+    },
+    {
+      title: "پروژه سوم",
+      description: "پخش و پلیر موزیک",
+      image: "/music.png",
+      link: "https://next2-vgag.vercel.app/",
+    },
+  ];
+
   return (
     <div>
-        <Menu/>
-        <div className="mt-44 grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
-  <a
-    href="https://my-app.vercel.app"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block p-4 border rounded-lg shadow hover:shadow-md transition"
-  >
-    <h2 className="text-xl font-semibold">پروژه اول</h2>
-    <p className="text-gray-600">توضیح کوتاه درباره پروژه.</p>
-  </a>
-  <a
-    href="https://another-project.vercel.app"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="block p-4 border rounded-lg shadow hover:shadow-md transition"
-  >
-    <h2 className="text-xl font-semibold">پروژه دوم</h2>
-    <p className="text-gray-600">یه توضیح دیگه برای پروژه بعدی.</p>
-  </a>
-</div>
-
+      <Menu />
+      <div className="mt-44 max-w-screen-xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            className="bg-gradient-to-br from-[#FF8F9B] via-[#21074b] to-[#21074b] rounded-3xl shadow-xl hover:shadow-2xl transition duration-500 overflow-hidden"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+                className="w-full h-48 object-cover transform transition duration-500 hover:scale-110 hover:brightness-110"
+            />
+            <div className="p-6 text-right">
+              <h2
+                className="text-xl font-bold mb-2"
+                style={{ fontFamily: "Shabnam" }}
+              >
+                {project.title}
+              </h2>
+              <p className="text-gray-600 mb-4">{project.description}</p>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#FF8F9B] text-white py-2 px-4 rounded-full hover:bg-[#ff7084] transition"
+              >
+                مشاهده پروژه
+              </a>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }

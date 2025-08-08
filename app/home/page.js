@@ -13,7 +13,7 @@ export default function Page() {
       {/* Navbar */}
      <Menu/>
       {/* بقیه صفحه */}
-      <div className="pt-32">
+      <div className="pt-40">
         <MainBox />
         <Text />
         <FooterMenu />
