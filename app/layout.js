@@ -21,9 +21,32 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="fa"
+      style={{
+        backgroundColor: "var(--background)",
+        color: "var(--foreground)",
+      }}
+    >
+      <head>
+        {/* تغییر رنگ نوار آدرس موبایل */}
+        <meta
+          name="theme-color"
+          content="#1B1931"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{
+          backgroundColor: "var(--background)",
+          color: "var(--foreground)",
+        }}
       >
         {children}
       </body>

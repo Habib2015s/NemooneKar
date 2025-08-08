@@ -5,6 +5,13 @@
   --foreground: #2B2D42;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1B1931;
+    --foreground: #ededed;
+  }
+}
+
 @font-face {
   font-family: "Shabnam";
   src: url("/fonts/Shabnam.woff2") format("woff2"),
@@ -14,24 +21,21 @@
   font-display: swap;
 }
 
+/* مهم: رنگ رو از همون لحظه اول به html بده */
+html {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
 html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
   font-family: "Shabnam", sans-serif;
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1B1931;
-    --foreground: #ededed;
-  }
-}
-
-/* باقی استایل‌ها و انیمیشن‌ها */
+/* انیمیشن‌ها */
 @keyframes marquee-rtl {
   0% {
     transform: translateX(-100%);
