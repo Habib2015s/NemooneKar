@@ -16,16 +16,19 @@
 
 body {
   font-family: "Shabnam", sans-serif;
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1B1931;
+    --foreground: #ededed;
+  }
 }
+
+/* بقیه کدهای انیمیشن و کلاس‌ها */
 
 @keyframes marquee-rtl {
   0% {
@@ -38,11 +41,4 @@ body {
 
 .animate-marquee-rtl {
   animation: marquee-rtl 15s linear infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1B1931;
-    --foreground: #ededed;
-  }
 }
