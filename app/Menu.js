@@ -5,13 +5,24 @@ import Link from 'next/link'
 export default function Menu() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    setWindowWidth(window.innerWidth); // مقدار اولیه عرض صفحه
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const telegramLink = "https://t.me/Habib_m0";
@@ -100,7 +111,7 @@ export default function Menu() {
                   ? "matrix(1.2, 0.1, 0.1, 1.2, 0, 0)"
                   : "matrix(1, 0, 0, 1, 0, 0)",
                 transition: "transform 0.5s",
-                display: window.innerWidth < 768 ? "none" : "block",
+                display: windowWidth < 768 ? "none" : "block",
                 transformOrigin: "center",
                 scale: isScrolled ? 0.75 : 1,
               }}

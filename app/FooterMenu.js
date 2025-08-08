@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import HoverIcon from './HoverIcon';
+import Link from 'next/link';
 
 export default function FooterMenu() {
   useEffect(() => {
@@ -23,10 +24,15 @@ export default function FooterMenu() {
       <div
         style={{ fontFamily: "Shabnam" }}
         className="flex flex-col sm:flex-row gap-6 sm:gap-10 justify-center text-lg my-10 px-4"
-      >
+      ><Link href="/darbare">
         <p className='hover:text-[#FF8F9B] cursor-pointer text-center sm:text-left'>درباره من</p>
+      </Link>
+      <Link href="/nemone">
         <p className='hover:text-[#FF8F9B] cursor-pointer text-center sm:text-left'>نمونه کارها</p>
+      </Link>
+      <Link href="/home">
         <p className='hover:text-[#FF8F9B] cursor-pointer text-center sm:text-left'>صفحه اصلی</p>
+      </Link>
       </div>
     </div>
   );
