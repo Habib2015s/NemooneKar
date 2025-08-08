@@ -1,155 +1,109 @@
 "use client"
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
+import React, { useState, useEffect } from "react";
+import Menu from "../Menu";
 
-export default function Menu() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+export default function Page() {
+  const skillsData = [
+    { name: "Python", level: 60 },
+    { name: "HTML", level: 90 },
+    { name: "CSS", level: 85 },
+    { name: "JavaScript", level: 75 },
+    { name: "React", level: 90 },
+    { name: "Next.js", level: 100 },
+    { name: "Photoshop", level: 55 },
+    { name: "After Effects", level: 80 },
+  ];
 
-  // چک کردن اسکرول
+  const [skills, setSkills] = useState(
+    skillsData.map(skill => ({ ...skill, current: 0 }))
+  );
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const interval = setInterval(() => {
+      setSkills(prevSkills => {
+        let done = true;
+        const updatedSkills = prevSkills.map((skill, idx) => {
+          if (skill.current < skillsData[idx].level) {
+            done = false;
+            return { ...skill, current: Math.min(skill.current + 2, skillsData[idx].level) };
+          }
+          return skill;
+        });
+        if (done) clearInterval(interval);
+        return updatedSkills;
+      });
+    }, 30);
+    return () => clearInterval(interval);
   }, []);
-
-  // چک کردن اندازه صفحه (ریسایز)
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize(); // اول بار اجرا کن
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const telegramLink = "https://t.me/Habib_m0";
 
   return (
-    <>
-      <style jsx>{`
-        .navbar-container {
-          display: flex;
-          align-items: center;
-          transition: all 0.5s ease-in-out;
-          flex-wrap: wrap;
-        }
-        .logo-container {
-          transition: all 0.5s ease-in-out;
-        }
-        .menu-links {
-          display: flex;
-          gap: 2rem;
-          transition: all 0.5s ease-in-out;
-          font-family: Shabnam;
-          text-align: center;
-          flex-wrap: wrap;
-        }
-        .telegram-button {
-          background: #FF8F9B;
-          border-radius: 1.5rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 0;
-          transition: all 0.5s ease-in-out;
-          font-family: Shabnam;
-          font-weight: bold;
-          color: #2B2D42;
-          border: none;
-        }
-        /* حالت موبایل */
-        @media (max-width: 768px) {
-          .navbar-container {
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-          }
-          .menu-links {
-            order: 1;
-            gap: 1.2rem;
-            font-size: 0.9rem;
-          }
-          .telegram-button {
-            order: 2;
-            width: 100%;
-            max-width: 300px;
-            height: 40px;
-            font-size: 1rem;
-          }
-          .logo-container {
-            order: 0;
-            display: none;
-          }
-        }
-      `}</style>
-
+    <div>
+      <Menu />
       <div
-        className={`
-          fixed top-0 left-0 right-0 z-50 w-full
-          bg-black/50 backdrop-blur-md backdrop-saturate-150 rounded-xl shadow-lg text-white
-          transition-all duration-500 ease-in-out
-          ${isScrolled ? 'py-2' : 'py-6'}
-        `}
+        style={{ fontFamily: "Shabnam", direction: "rtl" }}
+        className="px-4 md:px-0 min-h-screen flex flex-col"
       >
-        <div className="max-w-screen-xl mx-auto px-4">
-          <div
-            className="navbar-container"
-            style={{
-              justifyContent: isScrolled ? 'center' : 'space-between',
-              gap: isScrolled ? '1rem' : '2.5rem',
-            }}
-          >
-            {/* لوگو */}
-            <div
-              className="logo-container"
-              style={{
-                display: isMobile ? "none" : "block",
-                transform: isHovered
-                  ? "matrix(1.2, 0.1, 0.1, 1.2, 0, 0)"
-                  : "matrix(1, 0, 0, 1, 0, 0)",
-                transition: "transform 0.5s",
-                transformOrigin: "center",
-                scale: isScrolled ? 0.75 : 1,
-              }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <img
-                src="./pngg.png"
-                alt="logo"
-                className="w-[100px] h-auto cursor-pointer"
-              />
-            </div>
+        {/* بخش معرفی */}
+        <div className="mt-48 flex flex-col md:flex-row gap-6 justify-center items-center">
+          <div className="w-full max-w-xs md:max-w-60 h-48 md:h-72 flex justify-center md:justify-end mb-4 md:mb-0">
+            <img
+              src="./me.jpg"
+              alt="me"
+              className="rounded-3xl h-full w-auto object-cover max-w-full"
+            />
+          </div>
+          <div className="max-w-3xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b]">
+            <p className="font-bold text-2xl mt-4 text-right">سید حبیب الله موسوی</p>
+            <p className="text-gray-400 text-right mb-4 text-sm md:text-base leading-relaxed">
+              من کارشناسی مهندسی کامپیوتر دارم و در زمینه گرافیک فعالیت کردم.
+              همچنین دارای مدرک معتبر در طراحی با نرم‌افزارهای حرفه‌ای مثل
+              افترافکت و فتوشاپ هستم که باعث شده نگاه خلاقانه و دقیقی به طراحی
+              داشته باشم. حوزه تخصص اصلی من طراحی وب است و با ترکیب مهارت‌های
+              فنی و هنری، وب‌سایت‌هایی می‌سازم که هم زیبا و هم کاربرپسند باشند.
+              برای من طراحی وب فقط کدنویسی نیست، بلکه خلق تجربه‌ای است که کاربر
+              از ابتدا تا انتها از آن لذت ببرد. با توجه به دانش مهندسی و
+              پس‌زمینه گرافیکی، همیشه سعی می‌کنم پروژه‌هایم نوآورانه، دقیق و
+              مطابق با نیاز مشتری باشد. اگر دنبال یک طراح وب حرفه‌ای با دانش
+              فنی قوی و خلاقیت بالا هستید، من آماده‌ام تا بهترین راهکارها را برای
+              موفقیت پروژه شما ارائه دهم و در کنار شما باشم.
+            </p>
+          </div>
+        </div>
 
-            {/* لینک‌ها */}
-            <div className="menu-links">
-              <Link href="/darbare"><p className='hover:text-[#FF8F9B] cursor-pointer'>درباره من</p></Link>
-              <Link href="/nemone"><p className='hover:text-[#FF8F9B] cursor-pointer'>نمونه کارها</p></Link>
-              <Link href="/home"><p className='hover:text-[#FF8F9B] cursor-pointer'>صفحه اصلی</p></Link>
-            </div>
+        {/* بخش تجربه‌ها و مهارت‌ها - وسط صفحه */}
+        <div className="flex flex-col md:flex-row gap-6 my-20 flex-1 justify-center items-center">
+          {/* تجربه های کاری */}
+          <div className="max-w-xl flex flex-col h-fit shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
+            <p className="text-right font-bold text-xl m-4">تجربه های کاری</p>
+            <ul className="list-disc text-gray-400 space-y-2 pr-6 text-sm md:text-base">
+              <li>طراحی سایت های فروشگاهی</li>
+              <li>طراحی سایت های شرکتی</li>
+              <li>طراحی قالب گرافیکی و پوستر</li>
+            </ul>
+          </div>
 
-            {/* دکمه */}
-            <button
-              className="telegram-button"
-              style={{
-                height: isScrolled ? 40 : 50,
-                padding: isScrolled ? "0 1rem" : "0 1.5rem",
-                fontSize: isScrolled ? "0.875rem" : "1rem",
-                transform: isScrolled ? "scale(0.9)" : "scale(1)",
-              }}
-              onClick={() => window.open(telegramLink, "_blank")}
-            >
-              به من پیام بده
-            </button>
+          {/* مهارت های من */}
+          <div className="max-w-xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b] flex-1">
+            <p className="text-right font-bold text-xl mb-4">مهارت های من</p>
+            <div className="space-y-6">
+              {skills.map((skill, i) => (
+                <div key={i}>
+                  <div className="flex justify-between text-gray-300 text-sm mb-1">
+                    <span>{skill.name}</span>
+                    <span>{skill.current}%</span>
+                  </div>
+                  <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden relative">
+                    <div
+                      className="bg-purple-500 h-4 rounded-full transition-all duration-500 ease-out"
+                      style={{ width: `${skill.current}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
