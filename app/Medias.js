@@ -32,13 +32,13 @@ export default function Medias() {
         </div>
       </div>
         </Link>
-
+      <Link href="/khadamat">
       {/* کارت دوم */}
       <div
         className='w-full sm:w-2/3 cursor-pointer shadow-3xl flex flex-col p-6 rounded-3xl 
         bg-gradient-to-br from-[#FFDDE1] via-[#FF8F9B] to-[#21074b] 
         transform transition-transform duration-500 ease-in-out hover:scale-105 hover:shadow-4xl'
-      >
+        >
         <div className='flex gap-4 justify-center'>
 
           <lord-icon
@@ -64,10 +64,12 @@ export default function Medias() {
               style={{width:'50px',height:'50px'}}>
           </lord-icon>
         </div>
+
         <div className='flex text-right justify-end'>
           <p className='font-bold m-3'>خدمات من</p>
         </div>
       </div>
+                </Link>
     </div>
   )
 }

@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(false);
+export default function Menu() {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -12,9 +13,12 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // لینک تلگرام خودت رو اینجا قرار بده
+  const telegramLink = "https://t.me/Habib_m0";
+
   return (
-    
-         <div>
+    <div>
       {/* Navbar */}
       <div
         className={`
@@ -34,20 +38,18 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
               transition-all duration-500 hidden md:block
               ${isScrolled ? 'scale-75' : 'scale-100'}
             `}>
-          <img
-      src="./pngg.png"
-      alt="logo"
-      className="transition-all duration-500 w-[100px] h-auto cursor-pointer"
-      style={{
-        transform: isHovered
-          ? "matrix(1.2, 0.1, 0.1, 1.2, 0, 0)" // افکت بزرگ‌تر و کمی خمیده
-          : "matrix(1, 0, 0, 1, 0, 0)", // حالت عادی
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    />
-
-
+              <img
+                src="./pngg.png"
+                alt="logo"
+                className="transition-all duration-500 w-[100px] h-auto cursor-pointer"
+                style={{
+                  transform: isHovered
+                    ? "matrix(1.2, 0.1, 0.1, 1.2, 0, 0)" // افکت بزرگ‌تر و کمی خمیده
+                    : "matrix(1, 0, 0, 1, 0, 0)", // حالت عادی
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              />
             </div>
 
             {/* منوی وسط */}
@@ -58,11 +60,12 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
                 transition-all duration-500 ease-in-out
                 ${isScrolled ? 'gap-3 text-sm' : 'gap-8 text-base'}
               `}
-            ><Link href="/darbare">
-              <p className='hover:text-[#FF8F9B] cursor-pointer'>درباره من</p>
-            </Link>
+            >
+              <Link href="/darbare">
+                <p className='hover:text-[#FF8F9B] cursor-pointer'>درباره من</p>
+              </Link>
               <Link href="/nemone">
-              <p className='hover:text-[#FF8F9B] cursor-pointer'>نمونه کارها</p>
+                <p className='hover:text-[#FF8F9B] cursor-pointer'>نمونه کارها</p>
               </Link>
               <Link href="/home">
                 <p className='hover:text-[#FF8F9B] cursor-pointer'>صفحه اصلی</p>
@@ -82,6 +85,7 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
                   transition-all duration-500 cursor-pointer
                   ${isScrolled ? 'text-sm' : 'text-base'}
                 `}
+                onClick={() => window.open(telegramLink, "_blank")}
               >
                 به من پیام بده
               </button>
@@ -92,4 +96,3 @@ export default function Menu  ()  {const [isScrolled, setIsScrolled] = useState(
     </div>
   )
 }
-
