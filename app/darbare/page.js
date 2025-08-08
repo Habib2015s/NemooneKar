@@ -25,9 +25,10 @@ export default function Page() {
     return () => clearTimeout(timer);
   }, []);
 
-  return (
-    <div style={{ fontFamily: "Shabnam", direction: "rtl" }}>
+  return (<div>
+
       <Menu />
+    <div style={{ fontFamily: "Shabnam", direction: "rtl" }}>
 
       {/* بخش معرفی */}
       <div className="mt-48 flex flex-col md:flex-row gap-6 justify-center items-center px-4 md:px-0">
@@ -36,7 +37,7 @@ export default function Page() {
             src="./me.jpg"
             alt="me"
             className="rounded-3xl h-full w-auto object-cover max-w-full"
-          />
+            />
         </div>
         <div className="max-w-3xl flex flex-col shadow-3xl gap-5 rounded-3xl p-6 bg-gradient-to-br from-[#575757] via-[#21074b] to-[#21074b]">
           <p className="font-bold text-2xl mt-4 text-right">سید حبیب الله موسوی</p>
@@ -75,7 +76,7 @@ export default function Page() {
           <p className="text-right font-bold text-xl mb-4">مهارت های من</p>
           <div className="space-y-6">
             {skills.map((skill, i) => (
-              <div key={i}>
+                <div key={i}>
                 <div className="flex justify-between text-gray-300 text-sm mb-1">
                   <span>{skill.name}</span>
                   <span>{skill.current}%</span>
@@ -84,7 +85,7 @@ export default function Page() {
                   <div
                     className="bg-purple-500 h-4 rounded-full transition-all duration-1000 ease-out"
                     style={{ width: `${skill.current}%` }}
-                  ></div>
+                    ></div>
                 </div>
               </div>
             ))}
@@ -93,5 +94,6 @@ export default function Page() {
 
       </div>
     </div>
+            </div>
   );
 }
