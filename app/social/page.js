@@ -17,7 +17,7 @@ export default function SocialMedia() {
       <style jsx>{`
         .container {
           max-width: 600px;
-          margin: 80px auto 0 auto;
+          margin: 150px auto 0 auto; /* فاصله بیشتر از منو */
           display: flex;
           flex-direction: column;
           padding: 40px;
@@ -112,7 +112,7 @@ export default function SocialMedia() {
         @media (max-width: 768px) {
           .container {
             max-width: 90%;
-            margin-top: 100px;
+            margin-top: 180px; /* فاصله بیشتر موبایل */
             padding: 30px 20px;
           }
           a {
@@ -163,7 +163,7 @@ export default function SocialMedia() {
               rel="noopener noreferrer"
               aria-label={name}
               title={name}
-              style={{ animationDelay: `${0.2 * idx}s` }} 
+              style={{ animationDelay: `${0.2 * idx}s` }}
             >
               <FontAwesomeIcon icon={icon} />
             </a>
