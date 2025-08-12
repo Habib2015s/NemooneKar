@@ -23,6 +23,12 @@ export default function Page() {
       image: "/music.png",
       link: "https://next2-vgag.vercel.app/",
     },
+    {
+      title: "پروژه چهارم",
+      description: "شاپ نوشیدنی",
+      image: "/drink.png",
+      link: "https://drinks-one-orcin.vercel.app/",
+    }
   ];
 
   return (
