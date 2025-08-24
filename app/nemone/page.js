@@ -28,6 +28,11 @@ export default function Page() {
       description: "شاپ نوشیدنی",
       image: "/drink.png",
       link: "https://drinks-one-orcin.vercel.app/",
+    },{
+      title: "پروژه پنجم",
+      description: "شاپ قهوه",
+      image: "/Screenshot 2025-08-24 092803.png",
+      link: "https://coffee-five.vercel.app/",
     }
   ];
 
